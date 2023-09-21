@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 function NewMessage({ currentUser, onAddMessage }) {
-  const [body, setBody] = useState("");
+  const [body, setBody] = useState('');
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch("http://127.0.0.1:4000/messages", {
-      method: "POST",
+    fetch('http://127.0.0.1:4000/messages', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         username: currentUser.username,
@@ -19,7 +19,7 @@ function NewMessage({ currentUser, onAddMessage }) {
       .then((r) => r.json())
       .then((newMessage) => {
         onAddMessage(newMessage);
-        setBody("");
+        setBody('');
       });
   }
 

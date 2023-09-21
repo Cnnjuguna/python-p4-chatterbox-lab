@@ -6,8 +6,9 @@ from flask_migrate import Migrate
 
 from models import db, Message
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+app = Flask(__name__, instance_relative_config=True)
+app.config.from_pyfile('config.py')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///instance/app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # app.json.compact = False
 app.json_encoder = None
