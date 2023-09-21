@@ -23,7 +23,7 @@ def messages():
     if request.method == "GET":
         messages = []
         for message in Message.query.all():
-            message_dict = [message.to_dict() for message in messages]
+            message_dict = message.to_dict()
             messages.append(message_dict)
             
         response = make_response(jsonify(messages), 200)
